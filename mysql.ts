@@ -1,4 +1,4 @@
-require('dotenv').Config()
+
 type dbConnection = {
     connectionLimit: number,
     user: string,

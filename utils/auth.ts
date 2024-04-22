@@ -24,7 +24,7 @@ export default (email: string, password: string) => {
                 profile: results[0].profile,
                 path_avatar: results[0].avatar
             },
-                'secret', // process.env.JWT_KEY,
+               process.env.JWT_KEY ?? '',
             {
                 expiresIn: '6h'
             }    

@@ -1,6 +1,7 @@
 import express, {Request, Response} from 'express';    // const express = require('express')
 const app = express();
 import morgan from 'morgan';    // const morgan = require('morgan');
+require('dotenv').config()
 
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());

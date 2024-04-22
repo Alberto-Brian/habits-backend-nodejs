@@ -24,6 +24,7 @@ exports.default = (email, password) => {
             return;
         }
         bcrypt_1.default.compare(password, results[0].password, (error, result) => {
+            var _a;
             if (error)
                 reject(error);
             const token = jsonwebtoken_1.default.sign({
@@ -32,7 +33,7 @@ exports.default = (email, password) => {
                 email: email,
                 profile: results[0].profile,
                 path_avatar: results[0].avatar
-            }, 'secret', {
+            }, (_a = process.env.JWT_KEY) !== null && _a !== void 0 ? _a : '', {
                 expiresIn: '6h'
             });
             if (result)

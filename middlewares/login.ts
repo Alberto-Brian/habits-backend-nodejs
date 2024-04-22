@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
+require('dotenv').config()
 
 type Express = (req: Request, res: Response, next: any) => void;
 
 export default (req:Request, res: Response, next: any) => {
     try {
         const token:  string = req.headers.authorization?.split(' ')[1] ?? ''; //dividir a string em 2 elementos e pegar o segundo (o 1º é o Bearer, o 2º é o token)
-        const decode = jwt.verify(token, 'secret');
+        const decode = jwt.verify(token, process.env.JWT_KEY ?? '');
         req.body.user = decode;
         next();
     } catch (error) {
